@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; color: #1a1a2e; background: #fff; font-size: 13px; }
+
+  /* Header */
+  .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%); color: #fff; padding: 40px 48px 32px; }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; }
+  .brand { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+  .brand span { color: #4cc9f0; }
+  .date { font-size: 11px; opacity: 0.6; text-align: right; }
+  .report-title { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .report-subtitle { font-size: 14px; opacity: 0.75; }
+  .badge { display: inline-block; background: rgba(76,201,240,0.15); border: 1px solid rgba(76,201,240,0.35); color: #4cc9f0; padding: 4px 12px; border-radius: 20px; font-size: 11px; margin-top: 14px; }
+
+  /* Prospect info bar */
+  .prospect-bar { background: #f0f4ff; border-left: 4px solid #4361ee; padding: 16px 48px; display: flex; gap: 40px; }
+  .prospect-item { font-size: 12px; color: #555; }
+  .prospect-item strong { display: block; font-size: 13px; color: #1a1a2e; font-weight: 600; }
+
+  /* Body */
+  .body { padding: 36px 48px; }
+
+  /* Opening */
+  .opening-box { background: #f8f9ff; border-radius: 10px; padding: 20px 24px; margin-bottom: 28px; font-size: 13.5px; line-height: 1.7; color: #333; border: 1px solid #e0e7ff; }
+
+  /* Section */
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #4361ee; margin-bottom: 14px; padding-bottom: 6px; border-bottom: 1px solid #e0e7ff; }
+  .section-body { font-size: 13px; line-height: 1.7; color: #333; }
+
+  /* 3-column grid */
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+  .grid-card { border-radius: 10px; padding: 16px 18px; }
+  .grid-card.green  { background: #e8f5e9; border-top: 3px solid #43a047; }
+  .grid-card.red    { background: #fdecea; border-top: 3px solid #e53935; }
+  .grid-card.blue   { background: #e3f2fd; border-top: 3px solid #1e88e5; }
+  .grid-card-title  { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .grid-card.green .grid-card-title { color: #2e7d32; }
+  .grid-card.red   .grid-card-title { color: #b71c1c; }
+  .grid-card.blue  .grid-card-title { color: #0d47a1; }
+  .grid-card ul { padding-left: 16px; }
+  .grid-card ul li { font-size: 12px; line-height: 1.6; margin-bottom: 4px; color: #333; }
+
+  /* Recommended services */
+  .services { display: flex; gap: 14px; flex-wrap: wrap; }
+  .service-chip { background: #f0f0ff; border: 1px solid #c5cae9; border-radius: 20px; padding: 8px 18px; font-size: 12px; color: #3949ab; font-weight: 600; }
+
+  /* CTA */
+  .cta { background: linear-gradient(135deg, #4361ee, #7209b7); color: #fff; border-radius: 12px; padding: 28px 32px; margin-top: 32px; text-align: center; }
+  .cta h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .cta p { font-size: 13px; opacity: 0.85; }
+  .cta .cta-btn { display: inline-block; margin-top: 16px; background: #fff; color: #4361ee; border-radius: 8px; padding: 10px 28px; font-weight: 700; font-size: 13px; }
+
+  /* Footer */
+  .footer { border-top: 1px solid #eee; padding: 18px 48px; display: flex; justify-content: space-between; color: #999; font-size: 11px; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div class="brand">Simplif<span>IQ</span></div>
+    <div class="date">Generated on {{ date }}<br/>Confidential Report</div>
+  </div>
+  <div class="report-title">AI Business Audit Report</div>
+  <div class="report-subtitle">Personalized insights and automation opportunities for {{ company_name }}</div>
+  <div class="badge">{{ industry }}</div>
+</div>
+
+<!-- PROSPECT INFO -->
+<div class="prospect-bar">
+  <div class="prospect-item"><strong>{{ prospect_name }}</strong>Prospect Name</div>
+  <div class="prospect-item"><strong>{{ company_name }}</strong>Company</div>
+  <div class="prospect-item"><strong>{{ prospect_role }}</strong>Role</div>
+  <div class="prospect-item"><strong>{{ prospect_email }}</strong>Email</div>
+</div>
+
+<!-- BODY -->
+<div class="body">
+
+  <!-- Personalized Opening -->
+  <div class="opening-box">
+    {{ personalized_opening }}
+  </div>
+
+  <!-- Company Overview -->
+  <div class="section">
+    <div class="section-title">Company Overview</div>
+    <div class="section-body">
+      <p>{{ company_summary }}</p>
+      <p style="margin-top:10px;"><strong>Primary Audience:</strong> {{ target_audience }}</p>
+    </div>
+  </div>
+
+  <!-- 3-column analysis -->
+  <div class="grid3">
+    <div class="grid-card green">
+      <div class="grid-card-title">Key Strengths</div>
+      <ul>
+        {% for s in key_strengths %}<li>{{ s }}</li>{% endfor %}
+      </ul>
+    </div>
+    <div class="grid-card red">
+      <div class="grid-card-title">Potential Pain Points</div>
+      <ul>
+        {% for p in pain_points %}<li>{{ p }}</li>{% endfor %}
+      </ul>
+    </div>
+    <div class="grid-card blue">
+      <div class="grid-card-title">AI Opportunities</div>
+      <ul>
+        {% for o in ai_opportunities %}<li>{{ o }}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Recommended Services -->
+  <div class="section">
+    <div class="section-title">Recommended SimplifIQ Services</div>
+    <div class="services">
+      {% for svc in recommended_services %}
+      <div class="service-chip">✦ {{ svc }}</div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h3>Ready to transform {{ company_name }}?</h3>
+    <p>Schedule a free 30-minute strategy call with our AI specialists.</p>
+    <div class="cta-btn">Book a Call → simplifiq.ai/call</div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>SimplifIQ AI Solutions | simplifiq.ai</span>
+  <span>This report was auto-generated using publicly available data. © {{ date[:4] }} SimplifIQ</span>
+</div>
+
+</body>
+</html>
